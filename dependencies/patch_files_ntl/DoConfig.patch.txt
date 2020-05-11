@@ -1,0 +1,49 @@
+--- /Users/boland/Projects/HomomorphicEncryption/HElib_internal_etx/he-osx/dependencies/ntl-11.4.1/src/DoConfig	2019-10-08 09:34:08.000000000 -0400
++++ /Users/boland/Projects/HomomorphicEncryption/NTL_original/ntl-11.4.3/src/DoConfig	2020-04-24 14:32:34.000000000 -0400
+@@ -14,7 +14,8 @@
+ %MakeVal = (
+ 
+ 'CXX'	      => 'g++',
+-'CXXFLAGS'    => '-g -O2',
++'CXXFLAGS_'    => '-g -O2',
++'CXXFLAGS_NATIVE'    => '-g -O2',
+ 'CXXAUTOFLAGS'=> '',
+ 'NOCONTRACT'  => '',
+ 'AR'	      => 'ar',
+@@ -149,15 +150,15 @@
+ 
+ # warn against -O3, -Ofast, -ffast-math
+ 
+-if ($MakeVal{'CXXFLAGS'} =~ '-O3') {
++if ($MakeVal{'CXXFLAGS_'} =~ '-O3') {
+    Warning("-O3 flag may yield incorrect code");
+ }
+ 
+-if ($MakeVal{'CXXFLAGS'} =~ '-Ofast') {
++if ($MakeVal{'CXXFLAGS_'} =~ '-Ofast') {
+    Warning("-Ofast flag may yield incorrect code");
+ }
+ 
+-if ($MakeVal{'CXXFLAGS'} =~ '-ffast-math') {
++if ($MakeVal{'CXXFLAGS_'} =~ '-ffast-math') {
+    Warning("-ffast-math flag may yield incorrect code");
+ }
+ 
+@@ -171,7 +172,7 @@
+ 
+ # special processing: CXXFLAGS contains '-march=' => NATIVE=off
+ 
+-if ($MakeVal{'CXXFLAGS'} =~ '-march=') {
++if ($MakeVal{'CXXFLAGS_'} =~ '-march=') {
+    $MakeFlag{'NATIVE'} = 'off';
+ }
+ 
+@@ -441,7 +442,7 @@
+    foreach $name (sort keys %MakeSub) {
+       print HFILEOUT "$name=\"$MakeSub{$name}\"\n";
+    }
+-   #print HFILEOUT "CXXFLAGS=\"$MakeSub{'CXXFLAGS'}\"\n";
++   #print HFILEOUT "CXXFLAGS_=\"$MakeSub{'CXXFLAGS'}\"\n";
+    #print HFILEOUT "CXXAUTOFLAGS=\"$MakeSub{'CXXAUTOFLAGS'}\"\n";
+    #print HFILEOUT "NOCONTRACT=\"$MakeSub{'NOCONTRACT'}\"\n";
+ 

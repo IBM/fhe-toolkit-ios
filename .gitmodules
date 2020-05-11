@@ -1,0 +1,6 @@
+[submodule "installation/HElib"]
+	path = installation/HElib
+	url = git@github.ibm.com:fhe-experience/HElib.git
+[submodule "dependencies/HElib"]
+	path = dependencies/HElib
+	url = git@github.ibm.com:fhe-experience/HElib.git
