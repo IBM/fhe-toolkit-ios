@@ -63,7 +63,7 @@ Select “Clone an existing Project” from the Welcome to Xcode screen.
 Enter the Repository URL shown below. This URL can be found in the clone or download button of the GitHub repository. 
 
 ```
-git@github.com:IBM/fhe-toolkit-ios.git
+https://github.com/IBM/fhe-toolkit-ios.git
 ```
 
 ![Step two image](/Documentation/Images/Step%202.png?raw=true "Selecting a download location")
