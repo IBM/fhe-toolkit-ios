@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/boland/Projects/HomomorphicEncryption/HElib_internal_etx/he-ios-final/he-ios/fhe-toolkit-ios.xcodeproj">
+      location = "group:dependencies/HElib_iOS/helib_iOS_SDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:dependencies/HElib_iOS/helib_iOS_SDK.xcodeproj">
+      location = "group:fhe-toolkit-ios.xcodeproj">
    </FileRef>
 </Workspace>

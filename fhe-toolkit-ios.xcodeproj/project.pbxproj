@@ -28,6 +28,16 @@
 		A5A19AA62446063A000EA573 /* libhelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A19AA52446063A000EA573 /* libhelib.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A5889778246B6AB100320DB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5889771246B6AB100320DB6 /* helib_iOS_SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4AB09D3F5F942709CD7131C;
+			remoteInfo = helib;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3AA30B7F23D800250021A606 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -59,6 +69,7 @@
 		A58042822448FA0B00532D10 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		A580428424493BD300532D10 /* CapitalDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalDetailViewController.h; sourceTree = "<group>"; };
 		A580428524493BD300532D10 /* CapitalDetailViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CapitalDetailViewController.mm; sourceTree = "<group>"; };
+		A5889771246B6AB100320DB6 /* helib_iOS_SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = helib_iOS_SDK.xcodeproj; path = dependencies/HElib_iOS/helib_iOS_SDK.xcodeproj; sourceTree = "<group>"; };
 		A5A199D62440E94E000EA573 /* PackageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageInfo.h; sourceTree = "<group>"; };
 		A5A199D72440E94E000EA573 /* GF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GF2.h; sourceTree = "<group>"; };
 		A5A199D82440E94E000EA573 /* FFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFT.h; sourceTree = "<group>"; };
@@ -285,6 +296,7 @@
 		3AA30AE523D75D680021A606 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5889771246B6AB100320DB6 /* helib_iOS_SDK.xcodeproj */,
 				A5A19AA52446063A000EA573 /* libhelib.a */,
 			);
 			name = Frameworks;
@@ -301,6 +313,14 @@
 				A580428524493BD300532D10 /* CapitalDetailViewController.mm */,
 			);
 			path = SampleCode;
+			sourceTree = "<group>";
+		};
+		A5889772246B6AB100320DB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5889779246B6AB100320DB6 /* libhelib.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A5A199D32440E94E000EA573 /* ntl */ = {
@@ -605,12 +625,28 @@
 			mainGroup = 3AA30AB823D75BF40021A606;
 			productRefGroup = 3AA30AC223D75BF40021A606 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A5889772246B6AB100320DB6 /* Products */;
+					ProjectRef = A5889771246B6AB100320DB6 /* helib_iOS_SDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3AA30AC023D75BF40021A606 /* fhe-toolkit-ios */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A5889779246B6AB100320DB6 /* libhelib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libhelib.a;
+			remoteRef = A5889778246B6AB100320DB6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3AA30ABF23D75BF40021A606 /* Resources */ = {
