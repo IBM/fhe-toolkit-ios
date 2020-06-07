@@ -18,7 +18,7 @@ This toolkit requires the Xcode IDE and some associated command line tools. It a
 
 
 
-## Step 1: Install XCode and command line tools (1/2)
+## Step 1: Install Xcode and command line tools (1/2)
 
 
 Before cloning the repo, install [Xcode](https://developer.apple.com/xcode/) and the Xcode Command line Tools.  The Xcode IDE is the core of the Apple-native development experience and privides a productive environment for building apps for Mac, iPhone, iPad, and other Apple hardware.
@@ -46,7 +46,7 @@ If you do not currently have cmake installed, the setup script will install it f
 # Installing and Using the Toolkit in Xcode
 
 
-To begin, open Xcode. If you are not presented with the Welcome to XCode screen, within the XCode IDE, Select Window -> “Welcome To Xcode” 
+To begin, open Xcode. If you are not presented with the Welcome to Xcode screen, within the Xcode IDE, Select Window -> “Welcome To Xcode” 
 
 
 
