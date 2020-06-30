@@ -73,7 +73,6 @@ This is the Xcode Directory that contains all of the files that are neccessary t
 * AppDelegate.h	-
 * AppDelegate.m	-
 * Info.plist	-
-* Morphic.entitlements -	
 * CountryCapitalTableViewController.h
 * CountryCapitalTableViewController.m
 * CountryData.h
