@@ -135,7 +135,6 @@ build_gmp()
 
     make -j $LOGICALCPU_MAX &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-build.log"
     make install &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-install.log"
-    rm "${CURRENT_DIR}/../gmplib-so-${PLATFORM}-${ARCH}/lib/libgmp.10.dylib"
     rm "${CURRENT_DIR}/../gmp-${GMP_VERSION}.tar.bz2"
     cd ../
 }
@@ -161,8 +160,9 @@ build_ntl()
     cd ntl-${NTL_VERSION}
     cd src
 
-    ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
+    ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on SHARED=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
     make -j
+    make install
     
     cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl/include" 
     cp "${CURRENT_DIR}/ntl-${NTL_VERSION}/src/ntl.a" "${CURRENT_DIR}/ntl/libs/ntl.a"
