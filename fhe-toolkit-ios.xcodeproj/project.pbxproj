@@ -866,7 +866,6 @@
 					"$(PROJECT_DIR)/fhe-toolkit-ios/**",
 					"$(PROJECT_DIR)/dependencies/ntl/include",
 				);
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -903,7 +902,6 @@
 					"$(PROJECT_DIR)/fhe-toolkit-ios/**",
 					"$(PROJECT_DIR)/dependencies/ntl/include",
 				);
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Release;
 		};

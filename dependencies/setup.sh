@@ -131,7 +131,7 @@ build_gmp()
     #CONFIGURESCRIPT="gmp_configure_script.sh"
     #cat >"$CONFIGURESCRIPT" << EOF
 
-    ./configure CC="$CCARGS" CPPFLAGS="$CPPFLAGSARGS" --host=${ARCH}-apple-darwin_sim --disable-assembly --prefix="${CURRENT_DIR}/../gmplib-so-${PLATFORM}-${ARCH}"
+    ./configure CC="$CCARGS" CPPFLAGS="$CPPFLAGSARGS" --host=${ARCH}-apple-darwin_sim --disable-assembly --disable-shared --prefix="${CURRENT_DIR}/../gmplib-so-${PLATFORM}-${ARCH}"
 
     make -j $LOGICALCPU_MAX &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-build.log"
     make install &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-install.log"
@@ -164,8 +164,38 @@ build_ntl()
     ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
     make -j
     
-    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl/include" 
+    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl" 
     cp "${CURRENT_DIR}/ntl-${NTL_VERSION}/src/ntl.a" "${CURRENT_DIR}/ntl/libs/ntl.a"
+    rm "${CURRENT_DIR}/ntl-${NTL_VERSION}.tar"
+    cd ../../
+}
+
+build_ntl_arm()
+{
+    CURRENT_DIR=`pwd`
+    patch_ntl()
+    {
+         CURRENT_DIR=`pwd`
+         echo "where am I ${CURRENT_DIR}"
+         patch -u ntl-${NTL_VERSION}/src/DoConfig -i patch_files_ntl/DoConfig.patch.txt
+         patch -u ntl-${NTL_VERSION}/src/mfile -i patch_files_ntl/mfile.patch.txt
+     }
+    patch_ntl
+    PLATFORM=$1
+    ARCH=$2
+    
+    SDK=`xcrun --sdk $PLATFORM --show-sdk-path`
+    
+    mkdir "ntl-${PLATFORM}-${ARCH}"
+    mkdir "ntl-${PLATFORM}-${ARCH}/libs"
+    cd ntl-${NTL_VERSION}
+    cd src
+
+    ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
+    make -j
+    
+    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl-${PLATFORM}-${ARCH}/include" 
+    cp "${CURRENT_DIR}/ntl-${NTL_VERSION}/src/ntl.a" "${CURRENT_DIR}/ntl-${PLATFORM}-${ARCH}/libs/ntl.a"
     rm "${CURRENT_DIR}/ntl-${NTL_VERSION}.tar"
     cd ../../
 }
@@ -200,6 +230,8 @@ build_all()
     
     build_gmp "${IPHONESIMULATOR}" "x86_64"
     build_ntl "${IPHONESIMULATOR}" "x86_64"
+    #build_ntl_arm "${IPHONEOS}" "arm64"
+    #build_ntl_arm "${IPHONESIMULATOR}" "x86_64"
     build_helib "${IPHONESIMULATOR}" "x86_64"
 }
 
