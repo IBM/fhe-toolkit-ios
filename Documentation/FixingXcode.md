@@ -17,7 +17,7 @@ Install Xcode 12 or the latest version from the
 
 ## Step 2: Download & Install Xcode 11.7
 
-Download and install Xcode 11.7 from Apple's Download page. [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/).
+Download and install Xcode 11.7 from Apple's Download page [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/).
 
 [<img src="/Documentation/Images/FX_Step_2.png" width="506"/>](/Documentation/Images/FX_Step_2.png)
 
