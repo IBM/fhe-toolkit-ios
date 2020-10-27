@@ -13,18 +13,18 @@ Steps to get this to run...
 Install Xcode 12 or latest version from the
 [AppStore](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 
-    [<img src="/Documentation/Images/Xcode_Icon.png" width="200"/>](/Documentation/Images/Xcode_Icon.png)
+[<img src="/Documentation/Images/Xcode_Icon.png" width="200"/>](/Documentation/Images/Xcode_Icon.png)
 
 ## Step 2: Download & Install Xcode 11.7
 
 Download and install Xcode 11.7 from Apple's Downloads page. [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/)
 
-  [<img src="/Documentation/Images/FX_Step_2.png" width="750"/>](/Documentation/Images/FX_Step_2.png)
+[<img src="/Documentation/Images/FX_Step_2.png" width="506"/>](/Documentation/Images/FX_Step_2.png)
 
 
 Install Xcode 11.7 into your `/Applications/Xcode11.7.app` Directory and rename it `Xcode11.7`.  If you don't re-name it you will override your existing Xcode.  Also, when you name it make sure you don't add any spaces in the name.  Spaces tend to break the compiling of dependencies. 
 
-   [<img src="/Documentation/Images/FX_Step_3.png" width="750"/>](/Documentation/Images/FX_Step_3.png) 
+[<img src="/Documentation/Images/FX_Step_3.png" width="704"/>](/Documentation/Images/FX_Step_3.png) 
 
 ## Step 2: Switch Command Line Tools
 Open your Terminal app `/Applications/Utilities/Terminal.app`, and switch your Xcode Command Line Tools to be Xcode11.7 by entering the following...
