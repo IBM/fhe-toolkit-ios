@@ -13,13 +13,13 @@ Steps to get this to run...
 Install Xcode 12 or latest version from the
 [AppStore](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 
-   ![Step one image](/Images/Xcode_Icon.png?raw=true "Xcode 12 Icon")
+   ![Step one image](/Documentation/Images/Xcode_Icon.png?raw=true "Xcode 12 Icon")
 
 ## Step 2: Download & Install Xcode 11.7
 
 Download and install Xcode 11.7 from Apple's Downloads page. [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/)
 
-  ![Step two image](/Images/FX_Step_2.png?raw=true "Downloading Xcode 11.7 from More Downloads Page")
+  ![Step two image](/Documentation/Images/FX_Step_2.png?raw=true "Downloading Xcode 11.7 from More Downloads Page")
 
 
 Install Xcode 11.7 into your `/Applications/Xcode11.7.app` Directory and rename it `Xcode11.7`.  If you don't re-name it you will override your existing Xcode.  Also, when you name it make sure you don't add any spaces in the name.  Spaces tend to break the compiling of dependencies.  
