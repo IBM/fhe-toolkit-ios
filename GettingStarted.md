@@ -5,7 +5,7 @@ This document will walk you through setting up Xcode to use this Github reposito
 a complete mobile application example step by step. **NOTE: This is currently simulator only, while it will run on an actual device in later releases. Also note at this time all compute is performed on the simulated device locally. **
 
 
-
+Please Note that we are currently experiencing an issue with Xcode 12, that is preventing us from compiling the dependencies with the Xcode 12 compiler.  To avoid that, you can use Xcode 11.7 or below.  If you would like to use Xcode 12 and above see [here](/Documentation/FixingXcode.md) for a way to work around the issue.
 
 
 
