@@ -8,14 +8,12 @@ a complete mobile application example step by step. **NOTE: This is currently si
 
 
 
-
-
-
 # Installing Required Tools 
 
 This toolkit requires the Xcode IDE and some associated command line tools. It also requires the cmake build system to be installed. 
 
 
+Please Note that we are currently experiencing an issue with Xcode 12, that is preventing us from compiling the dependencies with the Xcode 12 compiler.  To avoid that, you can use Xcode 11.7 or below.  If you would like to use Xcode 12 and above see the [Fixing Xcode](/Documentation/FixingXcode.md) section for a way to work around the issue. 
 
 
 ## Step 1: Install Xcode and command line tools (1/2)

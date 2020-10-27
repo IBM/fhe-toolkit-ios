@@ -131,7 +131,7 @@ build_gmp()
     #CONFIGURESCRIPT="gmp_configure_script.sh"
     #cat >"$CONFIGURESCRIPT" << EOF
 
-    ./configure CC="$CCARGS" CPPFLAGS="$CPPFLAGSARGS" --host=${ARCH}-apple-darwin_sim --disable-assembly --prefix="${CURRENT_DIR}/../gmplib-so-${PLATFORM}-${ARCH}"
+    ./configure CC="$CCARGS" CPPFLAGS="$CPPFLAGSARGS" --host=${ARCH}-apple-darwin_sim --disable-assembly --disable-shared --prefix="${CURRENT_DIR}/../gmplib-so-${PLATFORM}-${ARCH}"
 
     make -j $LOGICALCPU_MAX &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-build.log"
     make install &> "${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}-install.log"
@@ -164,7 +164,7 @@ build_ntl()
     ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
     make -j
     
-    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl/include" 
+    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl" 
     cp "${CURRENT_DIR}/ntl-${NTL_VERSION}/src/ntl.a" "${CURRENT_DIR}/ntl/libs/ntl.a"
     rm "${CURRENT_DIR}/ntl-${NTL_VERSION}.tar"
     cd ../../
