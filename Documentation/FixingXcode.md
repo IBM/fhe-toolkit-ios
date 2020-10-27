@@ -34,5 +34,5 @@ Open your Terminal app `/Applications/Utilities/Terminal.app`, and switch your X
 
 ## Back to the Getting Started Guide
 
-Continue to Step 2 of the Getting Started Guide and follow the instructions as noted.
+Continue to Step 2 of the [Getting Started Guide](/GettingStarted.md) and follow the instructions as noted.
    
