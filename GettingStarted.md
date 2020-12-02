@@ -3,6 +3,8 @@
 
 This document will walk you through setting up Xcode to use this GitHub repository and run a complete mobile application example step by step. 
 
+A working internet connection is required to build the toolkit as some dependencies are fetched from external sources at build time.
+
 **PLEASE NOTE: This is currently simulator only, while it will run on an actual device in later releases. Also note at this time all compute is performed on the simulated device locally.**
 
 
