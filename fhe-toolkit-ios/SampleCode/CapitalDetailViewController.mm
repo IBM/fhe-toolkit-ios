@@ -83,11 +83,11 @@ unsigned long debug = 0;
 
 - (void)createCapitalQuery {
 
-    helib::ArgMap amap;
-    amap.arg("p", p);
-    amap.arg("m", m);
-    amap.arg("debug", debug);
-    amap.arg("nthreads", nthreads);
+    //helib::ArgMap amap;
+    //amap.arg("p", p);
+    //amap.arg("m", m);
+    //amap.arg("debug", debug);
+    //amap.arg("nthreads", nthreads);
 
     // set NTL Thread pool size
     if (nthreads > 1)
@@ -98,28 +98,21 @@ unsigned long debug = 0;
      std::cout << "---Initialising HE Environment ... ";
      // Initialize context
      std::cout << "\n\tContext ... ";
-     FHE_NTIMER_START(Context);
      helib::Context context(m, p, r);
-     FHE_NTIMER_STOP(Context);
     
      // Modify the context, adding primes to the modulus chain
      std::cout  << "Building modulus chain..." << std::endl;
      dispatch_async(dispatch_get_main_queue(), ^(void){
              [self.logging setText:[NSString stringWithFormat:@"Building modulus chain..."]];
      });
-     FHE_NTIMER_START(Chain);
      helib::buildModChain(context, bits, c);
-     FHE_NTIMER_STOP(Chain);
-
      
      // Secret key management
      std::cout << "\n\tSecret Key ...";
      // Create a secret key associated with the context
-     FHE_NTIMER_START(Sec_key);
      helib::SecKey secret_key = helib::SecKey(context);
      // Generate the secret key
      secret_key.GenSecKey();
-     FHE_NTIMER_STOP(Sec_key);
     
      // Secret key management
      std::cout << "Creating secret key..." << std::endl;
@@ -133,16 +126,12 @@ unsigned long debug = 0;
              [self.logging setText:[NSString stringWithFormat:@"Generating key-switching matrices..."]];
      });
      // Compute key-switching matrices that we need
-     FHE_NTIMER_START(SKM);
      helib::addSome1DMatrices(secret_key);
-     FHE_NTIMER_STOP(SKM);
      
      // Public key management
      // Set the secret key (upcast: FHESecKey is a subclass of FHEPubKey)
      std::cout << "\n\tPublic Key ...";
-     FHE_NTIMER_START(Pub_key);
      const helib::PubKey& public_key = secret_key;
-     FHE_NTIMER_STOP(Pub_key);
      
      // Get the EncryptedArray of the context
      const helib::EncryptedArray& ea = *(context.ea);
@@ -163,10 +152,7 @@ unsigned long debug = 0;
      dispatch_async(dispatch_get_main_queue(), ^(void){
              [self.logging setText:[NSString stringWithFormat:@"Number of slots: %ld", nslots]];
      });
-     /************ Create the database ************/
-    //TODO: setup the database to be the capital, country
-    //TODO: this also should be done on app startup, should be separated from this layer
-       /************ Create the database ************/
+     /* ********** Create the database *********** */
 
      std::vector<std::pair<std::string, std::string>> address_book = {
        { "Albania", "Tirana" },
@@ -221,7 +207,6 @@ unsigned long debug = 0;
          << "\tConverting strings to numeric representation into Ptxt objects ..."
          << std::endl;
 
-     FHE_NTIMER_START(Ptxt_DB);
      std::vector<std::pair<helib::Ptxt<helib::BGV>, helib::Ptxt<helib::BGV>>>
          address_book_ptxt;
      for (const auto& name_addr_pair : address_book) {
@@ -244,11 +229,9 @@ unsigned long debug = 0;
          addr.at(i) = name_addr_pair.second[i];
        address_book_ptxt.emplace_back(std::move(name), std::move(addr));
      }
-     FHE_NTIMER_STOP(Ptxt_DB);
 
      // Encrypt the address book
      std::cout << "\tEncrypting the database..." << std::endl;
-     FHE_NTIMER_START(Ctxt_DB);
      std::vector<std::pair<helib::Ctxt, helib::Ctxt>> encrypted_address_book;
      for (const auto& name_addr_pair : address_book_ptxt) {
         helib::Ctxt encrypted_name(public_key);
@@ -257,18 +240,8 @@ unsigned long debug = 0;
         public_key.Encrypt(encrypted_addr, name_addr_pair.second);
         encrypted_address_book.emplace_back(encrypted_name, encrypted_addr);
      }
-     FHE_NTIMER_STOP(Ctxt_DB);
     
     // Print Timers
-    if (debug) {
-      helib::printNamedTimer(std::cout << std::endl, "Context");
-      helib::printNamedTimer(std::cout, "Chain");
-      helib::printNamedTimer(std::cout, "Sec_Key");
-      helib::printNamedTimer(std::cout, "SKM");
-      helib::printNamedTimer(std::cout, "Pub_key");
-      helib::printNamedTimer(std::cout, "Ptxt_DB");
-      helib::printNamedTimer(std::cout, "Ctxt_DB");
-    }
 
     std::cout << "\nInitialization Completed - Ready for Queries" << std::endl;
     std::cout << "--------------------------------------------" << std::endl;
@@ -281,7 +254,6 @@ unsigned long debug = 0;
              [self.logging setText:[NSString stringWithFormat:@"Creating Encrypted query"]];
      });
     
-     FHE_NTIMER_START(Query_encrypt);
      // Convert query to a numerical vector
      helib::Ptxt<helib::BGV> query_ptxt(context);
      for (long i = 0; i < query_string.size(); ++i)
@@ -290,15 +262,14 @@ unsigned long debug = 0;
      // Encrypt the query
      helib::Ctxt query(public_key);
      public_key.Encrypt(query, query_ptxt);
-     FHE_NTIMER_STOP(Query_encrypt);
 
 
-     /************ Perform the database search ************/
+     /* ********** Perform the database search *********** */
 
      dispatch_async(dispatch_get_main_queue(), ^(void){
              [self.logging setText:[NSString stringWithFormat:@"Searching the Database"]];
      });
-     FHE_NTIMER_START(Query_search);
+    
      std::vector<helib::Ctxt> mask;
      mask.reserve(address_book.size());
      for (const auto& encrypted_pair : encrypted_address_book) {
@@ -323,15 +294,13 @@ unsigned long debug = 0;
      for (int i = 1; i < mask.size(); i++)
        value += mask[i];
 
-     FHE_NTIMER_STOP(Query_search);
 
-     /************ Decrypt and print result ************/
+     /* ********** Decrypt and print result *********** */
 
      dispatch_async(dispatch_get_main_queue(), ^(void){
              [self.logging setText:[NSString stringWithFormat:@"Decrypting the Result"]];
      });
     
-     FHE_NTIMER_START(Query_decrypt);
      helib::Ptxt<helib::BGV> plaintext_result(context);
      secret_key.Decrypt(plaintext_result, value);
 
@@ -340,8 +309,6 @@ unsigned long debug = 0;
      std::string string_result;
      for (long i = 0; i < plaintext_result.size(); ++i)
        string_result.push_back(static_cast<long>(plaintext_result[i]));
-
-     FHE_NTIMER_STOP(Query_decrypt);
 
      std::cout << "\nQuery result: " << string_result << std::endl;
     dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -362,15 +329,5 @@ unsigned long debug = 0;
     float newTime = float(currentTime + 1);
     [self.timeGone setText:[NSString stringWithFormat:@"%.1f", newTime]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
