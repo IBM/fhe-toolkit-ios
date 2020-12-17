@@ -146,7 +146,6 @@ build_ntl()
     patch_ntl()
     {
          CURRENT_DIR=`pwd`
-         echo "where am I ${CURRENT_DIR}"
          patch -u ntl-${NTL_VERSION}/src/DoConfig -i patch_files_ntl/DoConfig.patch.txt
          patch -u ntl-${NTL_VERSION}/src/mfile -i patch_files_ntl/mfile.patch.txt
      }
@@ -164,7 +163,7 @@ build_ntl()
     ./configure CXX=clang++ CXXFLAGS_="-fembed-bitcode -stdlib=libc++  -arch ${ARCH} -isysroot ${SDK} -miphoneos-version-min=10.0"  NTL_THREADS=on NATIVE=off TUNE=generic NTL_GMP_LIP=on PREFIX="${CURRENT_DIR}/ntl" GMP_PREFIX="${CURRENT_DIR}/gmplib-so-${PLATFORM}-${ARCH}"
     make -j
     
-    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl" 
+    cp -R "${CURRENT_DIR}/ntl-${NTL_VERSION}/include" "${CURRENT_DIR}/ntl/include" 
     cp "${CURRENT_DIR}/ntl-${NTL_VERSION}/src/ntl.a" "${CURRENT_DIR}/ntl/libs/ntl.a"
     rm "${CURRENT_DIR}/ntl-${NTL_VERSION}.tar"
     cd ../../
@@ -189,8 +188,8 @@ build_helib()
     -DGMP_HEADERS="${DEPEND_DIR}/gmp/include" \
     -DGMP_LIB="${DEPEND_DIR}/gmp/lib/libgmp.a" \
     -DNTL_INCLUDE_PATHS="${DEPEND_DIR}/ntl/include" \
-        -DNTL_LIB="${DEPEND_DIR}/ntl/lib/ntl.a" \
-        -DNTL_DIR="${DEPEND_DIR}/ntl/include"
+    -DNTL_LIB="${DEPEND_DIR}/ntl/lib/ntl.a" \
+    -DNTL_DIR="${DEPEND_DIR}/ntl/include"
 }
 
 build_all()
