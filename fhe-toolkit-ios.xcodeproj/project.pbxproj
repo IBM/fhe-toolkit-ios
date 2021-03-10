@@ -844,8 +844,9 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"\"$PROJECT_DIR\"",
+					"$(PROJECT_DIR)/dependencies/HElib_iOS/src",
 					"$(PROJECT_DIR)/dependencies/HElib/include",
+					"$(PROJECT_DIR)/dependencies/HElib/dependencies/json",
 				);
 				INFOPLIST_FILE = "fhe-toolkit-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -864,8 +865,9 @@
 				PRODUCT_NAME = "Privacy Preserving Search";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/fhe-toolkit-ios/**",
+					"$(PROJECT_DIR)/\"Privacy Preserving Search\"/**",
 					"$(PROJECT_DIR)/dependencies/ntl/include",
+					"$(PROJECT_DIR)/dependencies/include",
 				);
 			};
 			name = Debug;
@@ -881,8 +883,9 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"\"$PROJECT_DIR\"",
+					"$(PROJECT_DIR)/dependencies/HElib_iOS/src",
 					"$(PROJECT_DIR)/dependencies/HElib/include",
+					"$(PROJECT_DIR)/dependencies/HElib/dependencies/json",
 				);
 				INFOPLIST_FILE = "fhe-toolkit-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -901,8 +904,9 @@
 				PRODUCT_NAME = "Privacy Preserving Search";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/fhe-toolkit-ios/**",
+					"$(PROJECT_DIR)/\"Privacy Preserving Search\"/**",
 					"$(PROJECT_DIR)/dependencies/ntl/include",
+					"$(PROJECT_DIR)/dependencies/include",
 				);
 			};
 			name = Release;

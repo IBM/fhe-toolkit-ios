@@ -184,6 +184,7 @@ build_helib()
     -DCMAKE_INSTALL_PREFIX=`pwd`/_install \
     -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO \
     -DCMAKE_IOS_INSTALL_COMBINED=YES \
+	-DHELIB_DEPENDENCIES_DIR="${DEPEND_DIR}/HElib/dependencies" \
     -DGMP_DIR="${DEPEND_DIR}/gmp" \
     -DGMP_HEADERS="${DEPEND_DIR}/gmp/include" \
     -DGMP_LIB="${DEPEND_DIR}/gmp/lib/libgmp.a" \
