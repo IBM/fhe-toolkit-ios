@@ -22,31 +22,17 @@
 * SOFTWARE.
 */
 
-#import "CountryData.h"
+#import <Foundation/Foundation.h>
 
-@implementation CountryData
+NS_ASSUME_NONNULL_BEGIN
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        NSDictionary *capitalData = [self JSONFromFile];
-        self.capitalArray = [capitalData objectForKey:@"data"];
-    }
-    return self;
-}
+@interface CountryData : NSObject
 
-- (NSDictionary *)JSONFromFile
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-}
+@property (nonatomic, copy) NSArray *capitalArray;
 
-- (NSString *)getCountry:(NSInteger)index {
-    NSDictionary *countryInfo = [self.capitalArray objectAtIndex:index];
-    NSString *countryTitle = [[countryInfo allKeys] objectAtIndex:0];
-    return countryTitle;
-}
+- (NSDictionary *)CSVFromFile;
+- (NSString *)getCountry:(NSInteger)index;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -22,17 +22,28 @@
 * SOFTWARE.
 */
 
-#import <Foundation/Foundation.h>
+#include "AbstractPlaintext.h"
+#include "AbstractEncoder.h"
 
-NS_ASSUME_NONNULL_BEGIN
+#include <algorithm>
 
-@interface CountryData : NSObject
+using namespace std;
 
-@property (nonatomic, copy) NSArray *capitalArray;
+namespace helayers {
 
-- (NSDictionary *)JSONFromFile;
-- (NSString *)getCountry:(NSInteger)index;
-
-@end
-
-NS_ASSUME_NONNULL_END
+void AbstractPlaintext::debugPrint(const string& title,
+                                   int maxVals,
+                                   int verbose,
+                                   ostream& out) const
+{
+  shared_ptr<AbstractEncoder> encoder = he.getEncoder();
+  vector<complex<double>> res = encoder->decodeComplex(*this);
+  out << title << ": "
+      << " slots=" << res.size() << ", chainIndex=" << getChainIndex() << endl;
+  if (maxVals < 0)
+    maxVals = res.size();
+  for (int i = 0; i < min(maxVals, (int)res.size()); ++i)
+    out << " " << res[i];
+  out << endl;
+}
+}
