@@ -16,6 +16,7 @@
 		A54A455525FA8A07004E99EA /* HelayersTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54A455025FA8A07004E99EA /* HelayersTimer.cpp */; };
 		A54A455825FA9AB8004E99EA /* countries_dataset.csv in Resources */ = {isa = PBXBuildFile; fileRef = A54A455725FA9AB8004E99EA /* countries_dataset.csv */; };
 		A54A456025FAA68A004E99EA /* NativeFunctionEvaluator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54A455E25FAA68A004E99EA /* NativeFunctionEvaluator.cpp */; };
+		A54A456325FAC48E004E99EA /* Saveable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54A456125FAC48E004E99EA /* Saveable.cpp */; };
 		A571206225F9730F0067CC56 /* HelibCkksPlaintext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204B25F9730E0067CC56 /* HelibCkksPlaintext.cpp */; };
 		A571206325F9730F0067CC56 /* HelibBgvPlaintext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204C25F9730E0067CC56 /* HelibBgvPlaintext.cpp */; };
 		A571206425F9730F0067CC56 /* HelibConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204D25F9730E0067CC56 /* HelibConfig.cpp */; };
@@ -93,6 +94,8 @@
 		A54A455A25FAA53E004E99EA /* BitwiseEvaluator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitwiseEvaluator.h; sourceTree = "<group>"; };
 		A54A455E25FAA68A004E99EA /* NativeFunctionEvaluator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeFunctionEvaluator.cpp; sourceTree = "<group>"; };
 		A54A455F25FAA68A004E99EA /* NativeFunctionEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeFunctionEvaluator.h; sourceTree = "<group>"; };
+		A54A456125FAC48E004E99EA /* Saveable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Saveable.cpp; sourceTree = "<group>"; };
+		A54A456225FAC48E004E99EA /* Saveable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saveable.h; sourceTree = "<group>"; };
 		A571204A25F9730E0067CC56 /* HelibCkksPlaintext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelibCkksPlaintext.h; sourceTree = "<group>"; };
 		A571204B25F9730E0067CC56 /* HelibCkksPlaintext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelibCkksPlaintext.cpp; sourceTree = "<group>"; };
 		A571204C25F9730E0067CC56 /* HelibBgvPlaintext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelibBgvPlaintext.cpp; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 		A571207425F979890067CC56 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				A54A456125FAC48E004E99EA /* Saveable.cpp */,
+				A54A456225FAC48E004E99EA /* Saveable.h */,
 				A571207525F979990067CC56 /* BinIoUtils.cpp */,
 				A571207625F979990067CC56 /* BinIoUtils.h */,
 			);
@@ -871,6 +876,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54A456325FAC48E004E99EA /* Saveable.cpp in Sources */,
 				A571207A25F979C80067CC56 /* AlwaysAssert.cpp in Sources */,
 				A580428624493BD300532D10 /* CapitalDetailViewController.mm in Sources */,
 				3AA30AC623D75BF40021A606 /* AppDelegate.m in Sources */,

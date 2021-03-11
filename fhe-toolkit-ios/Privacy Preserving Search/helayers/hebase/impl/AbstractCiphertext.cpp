@@ -203,4 +203,11 @@ void AbstractCiphertext::multiplyScalar(double scalar)
 }
 
 void AbstractCiphertext::rescaleRaw() { rescale(); }
+
+void AbstractCiphertext::remod(int chainIndex)
+{
+  throw runtime_error(
+      "remod operation not implemented for this class of ciphertext");
+
+}
 }

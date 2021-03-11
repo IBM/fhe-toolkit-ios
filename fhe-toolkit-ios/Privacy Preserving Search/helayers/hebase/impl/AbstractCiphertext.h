@@ -140,6 +140,14 @@ public:
   virtual void setChainIndex(int chainIndex) = 0;
 
   virtual int getChainIndex() const = 0;
+    
+  ///@brief set the chain index higher than the current level
+  ///@param chainIndex the chainIndex to "jump" up to.
+  ///       -1 implies - jump as high as possible
+  ///       Note that this method is for internal use and does not
+  ///       work in general settings.
+  virtual void remod(int chainIndex = -1);
+
 
   virtual int slotCount() const = 0;
 
