@@ -46,7 +46,6 @@
 
 - (void)createData {
     self.dataSource = [[CountryData alloc] init];
-    //TODO: perhaps this is where i generate the encrypter database, maybe even on a bg thread
 }
 
 #pragma mark - Table view data source

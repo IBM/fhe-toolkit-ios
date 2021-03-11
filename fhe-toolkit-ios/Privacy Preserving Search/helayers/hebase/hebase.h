@@ -22,17 +22,17 @@
 * SOFTWARE.
 */
 
-#import <Foundation/Foundation.h>
+#ifndef SRC_HELAYERS_HEBASE_H
+#define SRC_HELAYERS_HEBASE_H
 
-NS_ASSUME_NONNULL_BEGIN
+#include "AlwaysAssert.h"
+#include "BitwiseEvaluator.h"
+#include "CTile.h"
+#include "Encoder.h"
+#include "NativeFunctionEvaluator.h"
+#include "HeContext.h"
+#include "HeTraits.h"
+#include "PTile.h"
+#include "HelayersTimer.h"
 
-@interface CountryData : NSObject
-
-@property (nonatomic, copy) NSArray *capitalArray;
-
-- (NSDictionary *)CSVFromFile;
-- (NSString *)getCountry:(NSInteger)index;
-
-@end
-
-NS_ASSUME_NONNULL_END
+#endif /* SRC_HELAYERS_HEBASE_H */

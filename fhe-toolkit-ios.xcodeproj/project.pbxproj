@@ -15,6 +15,7 @@
 		3AA30AD723D75BF60021A606 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA30AD623D75BF60021A606 /* main.m */; };
 		A54A455525FA8A07004E99EA /* HelayersTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54A455025FA8A07004E99EA /* HelayersTimer.cpp */; };
 		A54A455825FA9AB8004E99EA /* countries_dataset.csv in Resources */ = {isa = PBXBuildFile; fileRef = A54A455725FA9AB8004E99EA /* countries_dataset.csv */; };
+		A54A456025FAA68A004E99EA /* NativeFunctionEvaluator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54A455E25FAA68A004E99EA /* NativeFunctionEvaluator.cpp */; };
 		A571206225F9730F0067CC56 /* HelibCkksPlaintext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204B25F9730E0067CC56 /* HelibCkksPlaintext.cpp */; };
 		A571206325F9730F0067CC56 /* HelibBgvPlaintext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204C25F9730E0067CC56 /* HelibBgvPlaintext.cpp */; };
 		A571206425F9730F0067CC56 /* HelibConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571204D25F9730E0067CC56 /* HelibConfig.cpp */; };
@@ -40,7 +41,6 @@
 		A571209225F97BE50067CC56 /* Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A571209025F97BE50067CC56 /* Encoder.cpp */; };
 		A580427E24489B3800532D10 /* CountryCapitalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A580427D24489B3800532D10 /* CountryCapitalTableViewController.m */; };
 		A58042812448A88A00532D10 /* CountryData.m in Sources */ = {isa = PBXBuildFile; fileRef = A58042802448A88A00532D10 /* CountryData.m */; };
-		A58042832448FA0B00532D10 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = A58042822448FA0B00532D10 /* data.json */; };
 		A580428624493BD300532D10 /* CapitalDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A580428524493BD300532D10 /* CapitalDetailViewController.mm */; };
 		A5A19A522440E94E000EA573 /* ntl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A19A442440E94E000EA573 /* ntl.a */; };
 		A5A19A532440E94E000EA573 /* libgmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A19A492440E94E000EA573 /* libgmp.a */; };
@@ -89,6 +89,10 @@
 		3AA30AD623D75BF60021A606 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A54A455025FA8A07004E99EA /* HelayersTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelayersTimer.cpp; sourceTree = "<group>"; };
 		A54A455725FA9AB8004E99EA /* countries_dataset.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_dataset.csv; sourceTree = "<group>"; };
+		A54A455925FAA477004E99EA /* hebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hebase.h; sourceTree = "<group>"; };
+		A54A455A25FAA53E004E99EA /* BitwiseEvaluator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitwiseEvaluator.h; sourceTree = "<group>"; };
+		A54A455E25FAA68A004E99EA /* NativeFunctionEvaluator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeFunctionEvaluator.cpp; sourceTree = "<group>"; };
+		A54A455F25FAA68A004E99EA /* NativeFunctionEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeFunctionEvaluator.h; sourceTree = "<group>"; };
 		A571204A25F9730E0067CC56 /* HelibCkksPlaintext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelibCkksPlaintext.h; sourceTree = "<group>"; };
 		A571204B25F9730E0067CC56 /* HelibCkksPlaintext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelibCkksPlaintext.cpp; sourceTree = "<group>"; };
 		A571204C25F9730E0067CC56 /* HelibBgvPlaintext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelibBgvPlaintext.cpp; sourceTree = "<group>"; };
@@ -141,7 +145,6 @@
 		A580427D24489B3800532D10 /* CountryCapitalTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryCapitalTableViewController.m; sourceTree = "<group>"; };
 		A580427F2448A88A00532D10 /* CountryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryData.h; sourceTree = "<group>"; };
 		A58042802448A88A00532D10 /* CountryData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryData.m; sourceTree = "<group>"; };
-		A58042822448FA0B00532D10 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		A580428424493BD300532D10 /* CapitalDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalDetailViewController.h; sourceTree = "<group>"; };
 		A580428524493BD300532D10 /* CapitalDetailViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CapitalDetailViewController.mm; sourceTree = "<group>"; };
 		A5889771246B6AB100320DB6 /* helib_iOS_SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = helib_iOS_SDK.xcodeproj; path = dependencies/HElib_iOS/helib_iOS_SDK.xcodeproj; sourceTree = "<group>"; };
@@ -354,7 +357,6 @@
 				3AA30AC523D75BF40021A606 /* AppDelegate.m */,
 				3AA30AC723D75BF40021A606 /* SceneDelegate.h */,
 				3AA30AC823D75BF40021A606 /* SceneDelegate.m */,
-				A58042822448FA0B00532D10 /* data.json */,
 				A580427B24489B0400532D10 /* Privacy Preserving Search */,
 				A5A19A5A2440EA47000EA573 /* include */,
 				A5A19A452440E94E000EA573 /* gmplib-so-iphonesimulator-x86_64 */,
@@ -396,6 +398,10 @@
 		A571204825F96E700067CC56 /* hebase */ = {
 			isa = PBXGroup;
 			children = (
+				A54A455E25FAA68A004E99EA /* NativeFunctionEvaluator.cpp */,
+				A54A455F25FAA68A004E99EA /* NativeFunctionEvaluator.h */,
+				A54A455A25FAA53E004E99EA /* BitwiseEvaluator.h */,
+				A54A455925FAA477004E99EA /* hebase.h */,
 				A54A455025FA8A07004E99EA /* HelayersTimer.cpp */,
 				A571209025F97BE50067CC56 /* Encoder.cpp */,
 				A571209125F97BE50067CC56 /* Encoder.h */,
@@ -833,7 +839,6 @@
 				A5A19A572440E94E000EA573 /* gmp.info in Resources */,
 				3AA30AD123D75BF60021A606 /* Assets.xcassets in Resources */,
 				3AA30ACF23D75BF40021A606 /* Main.storyboard in Resources */,
-				A58042832448FA0B00532D10 /* data.json in Resources */,
 				A54A455825FA9AB8004E99EA /* countries_dataset.csv in Resources */,
 				A5A19A552440E94E000EA573 /* libgmp.la in Resources */,
 			);
@@ -887,6 +892,7 @@
 				A571207325F979050067CC56 /* HeTraits.cpp in Sources */,
 				A571207025F978E00067CC56 /* HeContext.cpp in Sources */,
 				A571206825F9730F0067CC56 /* HelibCkksContext.cpp in Sources */,
+				A54A456025FAA68A004E99EA /* NativeFunctionEvaluator.cpp in Sources */,
 				3AA30AC923D75BF40021A606 /* SceneDelegate.m in Sources */,
 				A571208725F97A160067CC56 /* AbstractEncoder.cpp in Sources */,
 				A571206B25F9730F0067CC56 /* HelibBgvCiphertext.cpp in Sources */,

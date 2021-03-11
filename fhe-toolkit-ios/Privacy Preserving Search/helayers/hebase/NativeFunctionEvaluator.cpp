@@ -22,17 +22,33 @@
 * SOFTWARE.
 */
 
-#import <Foundation/Foundation.h>
+#include "NativeFunctionEvaluator.h"
 
-NS_ASSUME_NONNULL_BEGIN
+using namespace std;
 
-@interface CountryData : NSObject
+namespace helayers {
 
-@property (nonatomic, copy) NSArray *capitalArray;
+NativeFunctionEvaluator::NativeFunctionEvaluator(HeContext& he)
+    : impl(he.getFunctionEvaluator())
+{
+}
 
-- (NSDictionary *)CSVFromFile;
-- (NSString *)getCountry:(NSInteger)index;
+NativeFunctionEvaluator::~NativeFunctionEvaluator() {}
 
-@end
+void NativeFunctionEvaluator::powerInPlace(CTile& c, int p) const
+{
+  impl->powerInPlace(*c.impl, p);
+}
 
-NS_ASSUME_NONNULL_END
+void NativeFunctionEvaluator::totalProduct(CTile& result, const std::vector<CTile>& multiplicands) const
+{
+  long size = multiplicands.size();
+  std::vector<shared_ptr<helayers::AbstractCiphertext>> absMultiplicands(size);
+  for(int i = 0; i < size ; i++)
+  {
+    absMultiplicands[i] = (multiplicands[i]).impl;
+  }
+  impl->totalProduct(*result.impl, absMultiplicands);
+}
+
+}
