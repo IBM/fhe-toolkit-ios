@@ -34,6 +34,12 @@
 using namespace helayers;
 using namespace std;
 
+std::string prependBundlePathOnFilePath(const char *fileName) {
+    NSString *filepath = [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String: fileName] ofType: nil];
+    char const *filePath = filepath.UTF8String;
+    return filePath;
+}
+
 
 @interface CapitalDetailViewController ()
 
@@ -67,9 +73,7 @@ unsigned long c = 2;
 // Size of NTL thread pool (default =1)
 unsigned long nthreads = 12;
 // input database file name
-//TODO: later implemnt this
-//TODO: how do I load the csv set?
-//string db_filename =  prependBundlePathOnFilePath("countries_dataset.csv");
+string db_filename =  prependBundlePathOnFilePath("countries_dataset.csv");
 // debug output (default no debug output)
 unsigned long debug = 0;
 
@@ -124,6 +128,12 @@ unsigned long debug = 0;
      dispatch_async(dispatch_get_main_queue(), ^(void){
              [self.logging setText:[NSString stringWithFormat:@"Building modulus chain..."]];
      });
+    
+     string countryName = std::string([self.queryCountry UTF8String]);;
+     // Helib-BGV is now ready to start doing some HE work.
+     // which we'll do in the follwing function, defined below
+     string string_result = run(he, db_filename, countryName, debug);
+    
 //     helib::buildModChain(context, bits, c);
 //
 //     // Secret key management
@@ -336,6 +346,91 @@ unsigned long debug = 0;
         [self.loadingScreen stopAnimating];
         [self.timeTicker invalidate];
     });
+}
+
+// Utility function to read <K,V> CSV data from file
+vector<pair<string, string>> read_csv(string filename, int maxLen) {
+  vector<pair<string, string>> dataset;
+  ifstream data_file(filename);
+
+  if (!data_file.is_open())
+    throw runtime_error(
+        "Error: This example failed trying to open the data file: " + filename +
+        "\n           Please check this file exists and try again.");
+
+  vector<string> row;
+  string line, entry, temp;
+
+  if (data_file.good()) {
+    // Read each line of file
+    while (getline(data_file, line)) {
+      row.clear();
+      stringstream ss(line);
+      //grab the next line in the csv
+      getline(ss, entry);
+      size_t pos = 0;
+      //split the first part by "," which should be the country
+      std::string delimiter = ",";
+      //find the pos of the first ,
+      pos = entry.find(delimiter);
+      //grab all the characters in front of the first ,
+      std::string token = entry.substr(0, pos);
+      //store it in row[0]
+      row.push_back(token);
+      //add the size of the , char to the position so we know where the capital starts
+      pos = pos + delimiter.length();
+      //grab the rest of the row as the capital
+      token = entry.substr(pos, string::npos);
+      //store it as row[1]
+      row.push_back(token);
+      if (row[0].size() > maxLen)
+        throw runtime_error("Country name " + row[0] + " too long");
+      if (row[1].size() > maxLen)
+        throw runtime_error("Capital name " + row[1] + " too long");
+
+      // Add key value pairs to dataset
+      dataset.push_back(make_pair(row[0], row[1]));
+    }
+  }
+
+  data_file.close();
+  return dataset;
+}
+
+string run(HeContext& he, const string& db_filename, const std::string& countryName, bool debug) {
+    // The run function receives an abstract HeContext class.
+    // Therefore the code below is oblivious to a particular HE scheme
+    // implementation.
+
+    // First let's print general information on our library and scheme.
+    // This will print their names, and the configuraton details.
+    he.printSignature();
+    
+    // However we do have some requirements that we can
+    // assert exists:
+    // We require the plaintext to be over modular arithmetic.
+    // We'll rely on that later.
+    //always_assert(he.getTraits().getIsModularArithmetic());
+    // Since we store ascii codes, we need it at least to be able
+    // to handle the numbers 0...127
+    //always_assert(he.getTraits().getArithmeticModulus() >= 127);
+
+    // Next, print the security level
+    // Note: This will be negligible to improve performance time.
+    cout << "\n***Security Level: " << he.getSecurityLevel()
+         << " *** Negligible for this example ***" << endl;
+
+    // Let's also print the number of slots.
+    // Each ciphertext will have this many slots.
+    cout << "\nNumber of slots: " << he.slotCount() << endl;
+    
+    // Now we'll read in the database (in cleartext).
+    // This function we'll make sure no string is longer than he.slotCount()
+    vector<pair<string, string>> country_db = read_csv(db_filename, he.slotCount());
+    
+    
+    
+    return  nil;
 }
 
 - (void)startTimer {
