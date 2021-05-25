@@ -4,6 +4,8 @@ IBM Fully Homomorphic Encryption Toolkit For iOS
 
 This source code is the packaged Xcode project and resources needed to build the open source <a href="https://github.com/homenc/HElib/">HELib</a> <a href="https://en.wikipedia.org/wiki/Homomorphic_encryption">Fully Homomorphic Encryption</a> library on an iPhone Simulator. 
 
+To learn more about FHE in general, and what it can be used for, you can check out our [FAQ/Content Solutions page](https://www.ibm.com/support/z-content-solutions/fully-homomorphic-encryption/).
+
 
 --------------------------------------------
 Compiling and Running the Xcode Project
